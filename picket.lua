@@ -100,7 +100,7 @@ minetest.register_node("myfences:fence_picket_"..name, {
 			}
 		},			
 
-	groups = {cracky = 2},
+	groups = {choppy = 2, flammable = 1},
 	sounds = default.node_sound_stone_defaults(),
 	})
 

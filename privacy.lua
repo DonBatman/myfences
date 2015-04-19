@@ -44,7 +44,7 @@ minetest.register_node("myfences:fence_privacy_"..name, {
 			{-0.5,-0.5,0.25,0.5,0.5,0.5},
 			}
 		},
-	groups = {cracky = 2},
+	groups = {choppy = 2, flammable = 1},
 	sounds = default.node_sound_stone_defaults(),
 	})
 end
