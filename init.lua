@@ -1,3 +1,9 @@
+myfences = {}
+myfences.colors = {
+	{"red", "Red", "^myfences_red.png"},
+	{"green", "Green", "^myfences_green.png"},
+	{"white", "White", "^myfences_white.png"},
+}
 
 dofile(minetest.get_modpath("myfences").."/picket.lua")
 dofile(minetest.get_modpath("myfences").."/privacy.lua")

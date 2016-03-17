@@ -1,29 +1,14 @@
-local fences = { -- name, desc, item, img
-	{"wood",	     "Wood",  "group:wood",        "",					 {choppy = 2, flammable = 1}},
-	{"red_wood",	 "Red",   "group:wood",        "^myfences_red.png",  {choppy = 2, flammable = 1,not_in_creative_inventory=1}},
-	{"white_wood",	 "White", "group:wood",        "^myfences_white.png",{choppy = 2, flammable = 1,not_in_creative_inventory=1}},
-	{"green_wood",	 "Green", "group:wood",        "^myfences_green.png",{choppy = 2, flammable = 1,not_in_creative_inventory=1}},
-}
-
-for i in ipairs(fences) do
-	local name = fences[i][1]
-	local desc = fences[i][2]
-	local item = fences[i][3]
-	local stain = fences[i][4]
-	local gro = fences[i][5]
-
-
-minetest.register_node("myfences:fence_garden_"..name, {
-	description = desc.." Garden Fence",
+local node_garden = {
+	description = "Garden Fence",
 	drawtype = "nodebox",
 	tiles = {
-		"myfences_wood.png"..stain,
-		"myfences_wood.png"..stain,
-		"myfences_wood.png^[transformR90"..stain,
-		"myfences_wood.png^[transformR90"..stain,
-		"myfences_wood.png"..stain,
-		"myfences_wood.png"..stain,
-		},
+		"myfences_wood.png",
+		"myfences_wood.png",
+		"myfences_wood.png^[transformR90",
+		"myfences_wood.png^[transformR90",
+		"myfences_wood.png",
+		"myfences_wood.png",
+	},
 	paramtype = "light",
 	paramtype2 = "facedir",
 	sunlight_propogates = true,
@@ -42,23 +27,24 @@ minetest.register_node("myfences:fence_garden_"..name, {
 		type = "fixed",
 		fixed = {
 			{-0.5,-0.5,0.25,0.5,0.5,0.5},
-			}
-		},
-	groups = gro,
+		}
+	},
+	groups = {choppy = 2, flammable = 1},
 	sounds = default.node_sound_stone_defaults(),
-	})
+}
+minetest.register_node("myfences:garden_wood", node_garden)
 	
-minetest.register_node("myfences:fence_garden_"..name.."_corner", {
-	description = desc.." Garden Fence Corner",
+local node_garden_corner = {
+	description = "Garden Fence Corner",
 	drawtype = "nodebox",
 	tiles = {
-		"myfences_wood.png"..stain,
-		"myfences_wood.png"..stain,
-		"myfences_wood.png^[transformR90"..stain,
-		"myfences_wood.png^[transformR90"..stain,
-		"myfences_wood.png"..stain,
-		"myfences_wood.png"..stain,
-		},
+		"myfences_wood.png",
+		"myfences_wood.png",
+		"myfences_wood.png^[transformR90",
+		"myfences_wood.png^[transformR90",
+		"myfences_wood.png",
+		"myfences_wood.png",
+	},
 	paramtype = "light",
 	paramtype2 = "facedir",
 	sunlight_propogates = true,
@@ -84,23 +70,51 @@ minetest.register_node("myfences:fence_garden_"..name.."_corner", {
 		fixed = {
 			{-0.5,-0.5,0.25,0.5,0.5,0.5},
 			{0.25,-0.5,-0.5,0.5,0.5,0.5},
-			}
-		},
-	groups = gro,
+		}
+	},
+	groups = {choppy = 2, flammable = 1},
 	sounds = default.node_sound_stone_defaults(),
-	})
+}
+minetest.register_node("myfences:garden_wood_corner", node_garden_corner)
+
+for _, entry in ipairs(myfences.colors) do
+	local color = entry[1]
+	local desc = entry[2]
+	local stain = entry[3]
+
+	local tiles = {
+		"myfences_wood.png"..stain,
+		"myfences_wood.png"..stain,
+		"myfences_wood.png^[transformR90"..stain,
+		"myfences_wood.png^[transformR90"..stain,
+		"myfences_wood.png"..stain,
+		"myfences_wood.png"..stain,
+	}
+
+	local node = table.copy(node_garden)
+	node.description = desc.." Garden Fence"
+	node.tiles = tiles
+	node.groups.not_in_creative_inventory = 1
+	minetest.register_node("myfences:garden_wood_"..color, node)
+
+	node = table.copy(node_garden_corner)
+	node.description = desc.." Garden Fence Corner"
+	node.tiles = tiles
+	node.groups.not_in_creative_inventory = 1
+	minetest.register_node("myfences:garden_wood_corner_"..color, node)
 end
 
 minetest.register_craft({
-	output = "myfences:fence_garden_wood",
+	output = "myfences:garden_wood",
 	recipe = {
 		{"","",""},
 		{"myfences:board","myfences:board","myfences:board"},
 		{"default:wood","myfences:board","default:wood"},
-		}
+	}
 })
 minetest.register_craft({
 	type = "shapeless",
 	output = "myfences:fence_garden_wood_corner",
-	recipe = {"myfences:fence_garden_wood","myfences:fence_garden_wood"},
+	recipe = {"myfences:garden_wood","myfences:garden_wood"},
 })
+

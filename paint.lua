@@ -1,19 +1,14 @@
-myfences_paint = none
+myfences_paint = nil
 local paintcount = 0
-local colors = {
-			{"Red","red"},
-			{"Green","green"},
-			{"White","white"},
-			}
-for i in ipairs(colors) do
-	local des = colors[i][1]
-	local col = colors[i][2]
+for _, entry in ipairs(myfences.colors) do
+	local col = entry[1]
+	local des = entry[2]
 
 for nu = 1,4 do
 	local num = nu
 
 
-minetest.register_tool("myfences:fence_brush", {
+minetest.register_tool("myfences:brush", {
 	description = "Fence Brush",
 	inventory_image = "myfences_paint_brush.png",
 	on_use = function(itemstack, user, pointed_thing)
@@ -41,74 +36,74 @@ minetest.register_tool("myfences:fence_brush", {
 	if paintcount ~= 0 then
 
 		if node.name == "myfences:corner_post_wood"  or
-			node.name == "myfences:corner_post_red_wood"  or
-			node.name == "myfences:corner_post_white_wood"  or
-			node.name == "myfences:corner_post_green_wood"  then
-			minetest.set_node(pos,{name = "myfences:corner_post_"..myfences_paint.."_wood", param2=node.param2})
+			node.name == "myfences:corner_post_wood_red"  or
+			node.name == "myfences:corner_post_wood_white"  or
+			node.name == "myfences:corner_post_wood_green"  then
+			minetest.set_node(pos,{name = "myfences:corner_post_wood_"..myfences_paint, param2=node.param2})
 			paintcount = paintcount - 1
 		end
 		
-		if node.name == "myfences:fence_picket_wood"  or
-			node.name == "myfences:fence_picket_red_wood"  or
-			node.name == "myfences:fence_picket_white_wood"  or
-			node.name == "myfences:fence_picket_green_wood"  then
-			minetest.set_node(pos,{name = "myfences:fence_picket_"..myfences_paint.."_wood", param2=node.param2})
+		if node.name == "myfences:picket_wood"  or
+			node.name == "myfences:picket_red_wood"  or
+			node.name == "myfences:picket_wood_white"  or
+			node.name == "myfences:picket_wood_green"  then
+			minetest.set_node(pos,{name = "myfences:picket_wood_"..myfences_paint, param2=node.param2})
 			paintcount = paintcount - 1
 		end
 		
-		if node.name == "myfences:fence_picket_wood_corner"  or
-			node.name == "myfences:fence_picket_red_wood_corner"  or
-			node.name == "myfences:fence_picket_white_wood_corner"  or
-			node.name == "myfences:fence_picket_green_wood_corner"  then
-			minetest.set_node(pos,{name = "myfences:fence_picket_"..myfences_paint.."_wood_corner", param2=node.param2})
+		if node.name == "myfences:picket_corner_wood"  or
+			node.name == "myfences:picket_corner_wood_red"  or
+			node.name == "myfences:picket_corner_wood_white"  or
+			node.name == "myfences:picket_corner_wood_green"  then
+			minetest.set_node(pos,{name = "myfences:picket_corner_wood_"..myfences_paint, param2=node.param2})
 			paintcount = paintcount - 1
 		end
 		
-		if node.name == "myfences:fence_picketb_wood"  or
-			node.name == "myfences:fence_picketb_red_wood"  or
-			node.name == "myfences:fence_picketb_white_wood"  or
-			node.name == "myfences:fence_picketb_green_wood"  then
-			minetest.set_node(pos,{name = "myfences:fence_picketb_"..myfences_paint.."_wood", param2=node.param2})
+		if node.name == "myfences:picketb_wood"  or
+			node.name == "myfences:picketb_wood_red"  or
+			node.name == "myfences:picketb_wood_white"  or
+			node.name == "myfences:picketb_wood_green"  then
+			minetest.set_node(pos,{name = "myfences:picketb_wood_"..myfences_paint, param2=node.param2})
 			paintcount = paintcount - 1
 		end
 		
-		if node.name == "myfences:fence_picketb_wood_corner"  or
-			node.name == "myfences:fence_picketb_red_wood_corner"  or
-			node.name == "myfences:fence_picketb_white_wood_corner"  or
-			node.name == "myfences:fence_picketb_green_wood_corner"  then
-			minetest.set_node(pos,{name = "myfences:fence_picketb_"..myfences_paint.."_wood_corner", param2=node.param2})
+		if node.name == "myfences:picketb_corner_wood"  or
+			node.name == "myfences:picketb_corner_wood_red"  or
+			node.name == "myfences:picketb_corner_wood_white"  or
+			node.name == "myfences:picketb_corner_wood_green"  then
+			minetest.set_node(pos,{name = "myfences:picketb_corner_wood_"..myfences_paint, param2=node.param2})
 			paintcount = paintcount - 1
 		end
 		
-		if node.name == "myfences:fence_garden_wood"  or
-			node.name == "myfences:fence_garden_red_wood"  or
-			node.name == "myfences:fence_garden_white_wood"  or
-			node.name == "myfences:fence_garden_green_wood"  then
-			minetest.set_node(pos,{name = "myfences:fence_garden_"..myfences_paint.."_wood", param2=node.param2})
+		if node.name == "myfences:garden_wood"  or
+			node.name == "myfences:garden_wood_red"  or
+			node.name == "myfences:garden_wood_white"  or
+			node.name == "myfences:garden_wood_green"  then
+			minetest.set_node(pos,{name = "myfences:garden_wood_"..myfences_paint, param2=node.param2})
 			paintcount = paintcount - 1
 		end
 		
-		if node.name == "myfences:fence_garden_wood_corner"  or
-			node.name == "myfences:fence_garden_red_wood_corner"  or
-			node.name == "myfences:fence_garden_white_wood_corner"  or
-			node.name == "myfences:fence_garden_green_wood_corner"  then
-			minetest.set_node(pos,{name = "myfences:fence_garden_"..myfences_paint.."_wood_corner", param2=node.param2})
+		if node.name == "myfences:garden_corner_wood"  or
+			node.name == "myfences:garden_corner_wood_red"  or
+			node.name == "myfences:garden_corner_wood_white"  or
+			node.name == "myfences:garden_corner_wood_green"  then
+			minetest.set_node(pos,{name = "myfences:garden_corner_wood_"..myfences_paint, param2=node.param2})
 			paintcount = paintcount - 1
 		end
 		
-		if node.name == "myfences:fence_privacy_wood"  or
-			node.name == "myfences:fence_privacy_red_wood"  or
-			node.name == "myfences:fence_privacy_white_wood"  or
-			node.name == "myfences:fence_privacy_green_wood"  then
-			minetest.set_node(pos,{name = "myfences:fence_privacy_"..myfences_paint.."_wood", param2=node.param2})
+		if node.name == "myfences:privacy_wood"  or
+			node.name == "myfences:privacy_wood_red"  or
+			node.name == "myfences:privacy_wood_white"  or
+			node.name == "myfences:privacy_wood_green"  then
+			minetest.set_node(pos,{name = "myfences:privacy_wood_"..myfences_paint, param2=node.param2})
 			paintcount = paintcount - 1
 		end
 		
-		if node.name == "myfences:fence_privacy_wood_corner"  or
-			node.name == "myfences:fence_privacy_red_wood_corner"  or
-			node.name == "myfences:fence_privacy_white_wood_corner"  or
-			node.name == "myfences:fence_privacy_green_wood_corner"  then
-			minetest.set_node(pos,{name = "myfences:fence_privacy_"..myfences_paint.."_wood_corner", param2=node.param2})
+		if node.name == "myfences:privacy_corner_wood"  or
+			node.name == "myfences:privacy_corner_wood_red"  or
+			node.name == "myfences:privacy_corner_wood_white"  or
+			node.name == "myfences:privacy_corner_wood_green"  then
+			minetest.set_node(pos,{name = "myfences:privacy_corner_wood_"..myfences_paint, param2=node.param2})
 			paintcount = paintcount - 1
 		end
 	end
@@ -152,7 +147,7 @@ minetest.register_craft({
 		}
 })
 minetest.register_craft({
-		output = 'myfences:fence_brush',
+		output = 'myfences:brush',
 		recipe = {
 			{'myfences:paint_brush_bristles'},
 			{'group:stick'},
