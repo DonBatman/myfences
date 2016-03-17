@@ -44,6 +44,7 @@ for _, entry in ipairs(myfences.colors) do
 		"myfences_wood.png^[transformR90"..stain,
 		"myfences_wood.png^[transformR90"..stain,
 	}
+	node.drop = "myfences:corner_post"
 	node.groups.not_in_creative_inventory = 1
 	minetest.register_node("myfences:corner_post_"..color, node)
 end

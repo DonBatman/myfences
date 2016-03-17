@@ -94,12 +94,14 @@ for _, entry in ipairs(myfences.colors) do
 	local node = table.copy(node_garden)
 	node.description = desc.." Garden Fence"
 	node.tiles = tiles
+	node.drop = "myfences:garden"
 	node.groups.not_in_creative_inventory = 1
 	minetest.register_node("myfences:garden_"..color, node)
 
 	node = table.copy(node_garden_corner)
 	node.description = desc.." Garden Fence Corner"
 	node.tiles = tiles
+	node.drop = "myfences:garden_corner"
 	node.groups.not_in_creative_inventory = 1
 	minetest.register_node("myfences:garden_corner_"..color, node)
 end
