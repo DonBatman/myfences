@@ -7,10 +7,12 @@ for _, entry in ipairs(myfences.colors) do
 for nu = 1,4 do
 	local num = nu
 
-
-minetest.register_tool("myfences:brush", {
+local brushes = {"empty","red","green","white"}
+for i, brush in pairs(brushes) do
+local brush = brushes[i]
+minetest.register_tool("myfences:brush_"..brush, {
 	description = "Fence Brush",
-	inventory_image = "myfences_paint_brush.png",
+	inventory_image = "myfences_paint_brush_"..brush..".png",
 	on_use = function(itemstack, user, pointed_thing)
 
 	if pointed_thing.type ~= "node" then
@@ -23,17 +25,24 @@ minetest.register_tool("myfences:brush", {
 	if node.name == "myfences:paint_green" then
 		myfences_paint = "green"
 		paintcount = 3
+		itemstack:take_item()
+			return "myfences:brush_green"
 	elseif node.name == "myfences:paint_red" then
 		myfences_paint = "red"
 		paintcount = 3
+		itemstack:take_item()
+			return "myfences:brush_red"
 	elseif node.name == "myfences:paint_white" then
 		myfences_paint = "white"
 		paintcount = 3
+		itemstack:take_item()
+			return "myfences:brush_white"
 	end
 	if myfences_paint == nil then
 		return
 	end
-	if paintcount ~= 0 then
+	if paintcount ~= 0 and
+		string.find(node.name,brush) == nil then
 
 		if node.name == "myfences:corner_post_wood"  or
 			node.name == "myfences:corner_post_wood_red"  or
@@ -106,15 +115,21 @@ minetest.register_tool("myfences:brush", {
 			minetest.set_node(pos,{name = "myfences:privacy_corner_wood_"..myfences_paint, param2=node.param2})
 			paintcount = paintcount - 1
 		end
+		if paintcount == 0 then
+		itemstack:take_item()
+			return "myfences:brush_empty"
+		end
 	end
 end
 })
+end
 minetest.register_node("myfences:paint_"..col, {
 	description = des.." Paint",
 	drawtype = "mesh",
 	paramtype = "light",
 	mesh = "myfences_can.obj",
 	tiles = {"myfences_paint_"..col..".png"},
+	stack_max = 1,
 	groups = {oddly_breakable_by_hand = 1},
 	selection_box = {
 		type = "fixed",
