@@ -33,7 +33,7 @@ local node_privacy = {
 	groups = {choppy = 2, flammable = 1},
 	sounds = default.node_sound_stone_defaults(),
 }
-minetest.register_node("myfences:privacy_wood", node_privacy)
+minetest.register_node("myfences:privacy", node_privacy)
 
 local node_privacy_corner = {
 	description = "Privacy Fence Corner",
@@ -78,7 +78,7 @@ local node_privacy_corner = {
 	groups = {choppy = 2, flammable = 1},
 	sounds = default.node_sound_stone_defaults(),
 }
-minetest.register_node("myfences:privacy_corner_wood", node_privacy_corner)
+minetest.register_node("myfences:privacy_corner", node_privacy_corner)
 
 for _, entry in ipairs(myfences.colors) do
 	local color = entry[1]
@@ -98,17 +98,17 @@ for _, entry in ipairs(myfences.colors) do
 	node.description = desc.." Privacy Fence"
 	node.tiles = tiles
 	node.groups.not_in_creative_inventory = 1
-	minetest.register_node("myfences:privacy_wood_"..color, node)
+	minetest.register_node("myfences:privacy_"..color, node)
 
 	node = table.copy(node_privacy_corner)
 	node.description = desc.." Privacy Fence Corner"
 	node.tiles = tiles
 	node.groups.not_in_creative_inventory = 1
-	minetest.register_node("myfences:privacy_corner_wood_"..color, node)
+	minetest.register_node("myfences:privacy_corner_"..color, node)
 end
 
 minetest.register_craft({
-	output = "myfences:privacy_wood",
+	output = "myfences:privacy",
 	recipe = {
 		{"","",""},
 		{"default:wood","myfences:board","myfences:board"},
@@ -117,7 +117,7 @@ minetest.register_craft({
 })
 minetest.register_craft({
 	type = "shapeless",
-	output = "myfences:privacy_corner_wood",
-	recipe = {"myfences:privacy_wood","myfences:privacy_wood"},
+	output = "myfences:privacy_corner",
+	recipe = {"myfences:privacy","myfences:privacy"},
 })
 

@@ -27,7 +27,7 @@ local node_post = {
 	groups = {choppy = 2, flammable = 1},
 	sounds = default.node_sound_stone_defaults(),
 }
-minetest.register_node("myfences:corner_post_wood", node_post)
+minetest.register_node("myfences:corner_post", node_post)
 
 for _, entry in ipairs(myfences.colors) do
 	local color = entry[1]
@@ -45,11 +45,11 @@ for _, entry in ipairs(myfences.colors) do
 		"myfences_wood.png^[transformR90"..stain,
 	}
 	node.groups.not_in_creative_inventory = 1
-	minetest.register_node("myfences:corner_post_wood_"..color, node)
+	minetest.register_node("myfences:corner_post_"..color, node)
 end
 
 minetest.register_craft({
-	output = "myfences:corner_post_wood",
+	output = "myfences:corner_post",
 	recipe = {
 		{"myfences:board"},
 		{"myfences:board"},

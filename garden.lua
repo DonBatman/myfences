@@ -32,7 +32,7 @@ local node_garden = {
 	groups = {choppy = 2, flammable = 1},
 	sounds = default.node_sound_stone_defaults(),
 }
-minetest.register_node("myfences:garden_wood", node_garden)
+minetest.register_node("myfences:garden", node_garden)
 	
 local node_garden_corner = {
 	description = "Garden Fence Corner",
@@ -75,7 +75,7 @@ local node_garden_corner = {
 	groups = {choppy = 2, flammable = 1},
 	sounds = default.node_sound_stone_defaults(),
 }
-minetest.register_node("myfences:garden_wood_corner", node_garden_corner)
+minetest.register_node("myfences:garden_corner", node_garden_corner)
 
 for _, entry in ipairs(myfences.colors) do
 	local color = entry[1]
@@ -95,17 +95,17 @@ for _, entry in ipairs(myfences.colors) do
 	node.description = desc.." Garden Fence"
 	node.tiles = tiles
 	node.groups.not_in_creative_inventory = 1
-	minetest.register_node("myfences:garden_wood_"..color, node)
+	minetest.register_node("myfences:garden_"..color, node)
 
 	node = table.copy(node_garden_corner)
 	node.description = desc.." Garden Fence Corner"
 	node.tiles = tiles
 	node.groups.not_in_creative_inventory = 1
-	minetest.register_node("myfences:garden_wood_corner_"..color, node)
+	minetest.register_node("myfences:garden_corner_"..color, node)
 end
 
 minetest.register_craft({
-	output = "myfences:garden_wood",
+	output = "myfences:garden",
 	recipe = {
 		{"","",""},
 		{"myfences:board","myfences:board","myfences:board"},
@@ -114,7 +114,7 @@ minetest.register_craft({
 })
 minetest.register_craft({
 	type = "shapeless",
-	output = "myfences:fence_garden_wood_corner",
-	recipe = {"myfences:garden_wood","myfences:garden_wood"},
+	output = "myfences:fence_garden_corner",
+	recipe = {"myfences:garden","myfences:garden"},
 })
 
