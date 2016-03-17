@@ -212,24 +212,28 @@ for _, entry in ipairs(myfences.colors) do
 	local node = table.copy(node_picketb)
 	node.description = desc.." Picket Fence"
 	node.tiles = tiles
+	node.drop = "myfences:picketb"
 	node.groups.not_in_creative_inventory = 1
 	minetest.register_node("myfences:picketb_"..color, node)
 
 	node = table.copy(node_picketb)
 	node.description = desc.." Picket Fence"
 	node.tiles = tiles
+	node.drop = "myfences:picket"
 	node.groups.not_in_creative_inventory = 1
 	minetest.register_node("myfences:picket_"..color, node)
 
 	node = table.copy(node_picket_corner)
 	node.description = desc.." Picket Fence Corner"
 	node.tiles = tiles
+	node.drop = "myfences:picket_corner"
 	node.groups.not_in_creative_inventory = 1
 	minetest.register_node("myfences:picket_corner_"..color, node)
 
 	node = table.copy(node_picketb_corner)
 	node.description = desc.." Picket Fence Corner"
 	node.tiles = tiles
+	node.drop = "myfences:picketb_corner"
 	node.groups.not_in_creative_inventory = 1
 	minetest.register_node("myfences:picketb_corner_"..color, node)
 end
