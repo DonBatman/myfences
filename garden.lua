@@ -80,7 +80,7 @@ minetest.register_node("myfences:garden_corner", node_garden_corner)
 for _, entry in ipairs(myfences.colors) do
 	local color = entry[1]
 	local desc = entry[2]
-	local stain = entry[3]
+	local stain = "^(myfences_color.png^[colorize:#"..entry[3].."^[mask:myfences_color.png)"
 
 	local tiles = {
 		"myfences_wood.png"..stain,

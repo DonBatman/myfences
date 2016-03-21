@@ -1,8 +1,8 @@
 myfences = {}
 myfences.colors = {
-	{"red", "Red", "^myfences_red.png"},
-	{"green", "Green", "^myfences_green.png"},
-	{"white", "White", "^myfences_white.png"},
+	{"red", "Red", "842800"},
+	{"green", "Green", "0c4916"},
+	{"white", "White", "ffffff"},
 }
 
 dofile(minetest.get_modpath("myfences").."/picket.lua")
