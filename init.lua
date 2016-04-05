@@ -21,7 +21,9 @@ dofile(minetest.get_modpath("myfences").."/picket.lua")
 dofile(minetest.get_modpath("myfences").."/privacy.lua")
 dofile(minetest.get_modpath("myfences").."/garden.lua")
 dofile(minetest.get_modpath("myfences").."/post.lua")
-dofile(minetest.get_modpath("myfences").."/paint.lua")
+if mypaint ~= nil then
+	dofile(minetest.get_modpath("myfences").."/paint.lua")
+end
 
 minetest.register_craftitem("myfences:board", {
 	description = "Default Board",
