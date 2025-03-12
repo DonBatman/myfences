@@ -34,5 +34,5 @@ You can only paint 3 sections and then need to punch paint can again.
 Fences can be repainted as many times as you want but you can not go back to regular wood color.
 
 
-License of code: DWYWPL
+License of code: MIT
 
