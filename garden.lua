@@ -116,7 +116,7 @@ minetest.register_craft({
 })
 minetest.register_craft({
 	type = "shapeless",
-	output = "myfences:fence_garden_corner",
+	output = "myfences:garden_corner",
 	recipe = {"myfences:garden","myfences:garden"},
 })
 
