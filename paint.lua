@@ -1,7 +1,7 @@
 local paintables = {
 	"myfences:picket", "myfences:picket_corner", "myfences:picketb", "myfences:picketb_corner",
 	"myfences:garden", "myfences:garden_corner", "myfences:privacy", "myfences:privacy_corner",
-	"myfences:corner_post"
+	"myfences:corner_post", "myfences:stick", "myfences:stick_corner", "myfences:short", "myfences:short_corner"
 }
 
 local colors = {}
