@@ -216,7 +216,7 @@ for _, entry in ipairs(myfences.colors) do
 	node.groups.not_in_creative_inventory = 1
 	minetest.register_node("myfences:picketb_"..color, node)
 
-	node = table.copy(node_picketb)
+	node = table.copy(node_picket)
 	node.description = desc.." Picket Fence"
 	node.tiles = tiles
 	node.drop = "myfences:picket"
