@@ -32,7 +32,7 @@ minetest.register_node("myfences:corner_post", node_post)
 for _, entry in ipairs(myfences.colors) do
 	local color = entry[1]
 	local desc = entry[2]
-	local stain = "^(myfences_color.png^[colorize:#"..entry[3]..":255)"
+	local stain = "^(myfences_color.png^[colorize:#"..entry[3]..":175)"
 
 	local node = table.copy(node_post)
 	node.description = desc.." Fence Post"
