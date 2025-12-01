@@ -36,7 +36,7 @@ local node_stick = {
 	groups = {choppy = 2, flammable = 1},
 	sounds = default.node_sound_stone_defaults(),
 }
-minetest.register_node("myfences:stick", node_stick)
+core.register_node("myfences:stick", node_stick)
 	
 local node_stick_corner = {
 	description = "Stick Fence Corner",
@@ -86,7 +86,7 @@ local node_stick_corner = {
 	groups = {choppy = 2, flammable = 1},
 	sounds = default.node_sound_stone_defaults(),
 }
-minetest.register_node("myfences:stick_corner", node_stick_corner)
+core.register_node("myfences:stick_corner", node_stick_corner)
 
 for _, entry in ipairs(myfences.colors) do
 	local color = entry[1]
@@ -107,16 +107,16 @@ for _, entry in ipairs(myfences.colors) do
 	node.tiles = tiles
 	node.drop = "myfences:stick"
 	node.groups.not_in_creative_inventory = 1
-	minetest.register_node("myfences:stick_"..color, node)
+	core.register_node("myfences:stick_"..color, node)
 
 	node = table.copy(node_stick_corner)
 	node.description = desc.." Stick Fence Corner"
 	node.tiles = tiles
 	node.drop = "myfences:stick_corner"
 	node.groups.not_in_creative_inventory = 1
-	minetest.register_node("myfences:stick_corner_"..color, node)
+	core.register_node("myfences:stick_corner_"..color, node)
 end
-minetest.register_craft({
+core.register_craft({
 	output = "myfences:stick",
 	recipe = {
 		{"","",""},
@@ -124,7 +124,7 @@ minetest.register_craft({
 		{"default:stick","myfences:board","default:stick"},
 	}
 })
-minetest.register_craft({
+core.register_craft({
 	type = "shapeless",
 	output = "myfences:stick_corner",
 	recipe = {"myfences:stick","myfences:stick"},

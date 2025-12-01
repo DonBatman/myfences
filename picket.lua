@@ -34,7 +34,7 @@ local node_picketb = {
 	groups = {choppy = 2, flammable = 1},
 	sounds = default.node_sound_stone_defaults(),
 }
-minetest.register_node("myfences:picketb", node_picketb)
+core.register_node("myfences:picketb", node_picketb)
 
 local node_picket = {
 	description = "Picket Fence",
@@ -81,7 +81,7 @@ local node_picket = {
 	sounds = default.node_sound_stone_defaults(),
 }
 
-minetest.register_node("myfences:picket", node_picket)
+core.register_node("myfences:picket", node_picket)
 
 local node_picket_corner = {
 	description = "Picket Fence Corner",
@@ -145,7 +145,7 @@ local node_picket_corner = {
 	groups = {choppy = 2, flammable = 1},
 	sounds = default.node_sound_stone_defaults(),
 }
-minetest.register_node("myfences:picket_corner", node_picket_corner)
+core.register_node("myfences:picket_corner", node_picket_corner)
 
 local node_picketb_corner = {
 	description = "Picket Fence Corner",
@@ -193,7 +193,7 @@ local node_picketb_corner = {
 	groups = {choppy = 2, flammable = 1},
 	sounds = default.node_sound_stone_defaults(),
 }
-minetest.register_node("myfences:picketb_corner", node_picketb_corner)
+core.register_node("myfences:picketb_corner", node_picketb_corner)
 
 for _, entry in ipairs(myfences.colors) do
 	local color = entry[1]
@@ -214,31 +214,31 @@ for _, entry in ipairs(myfences.colors) do
 	node.tiles = tiles
 	node.drop = "myfences:picketb"
 	node.groups.not_in_creative_inventory = 1
-	minetest.register_node("myfences:picketb_"..color, node)
+	core.register_node("myfences:picketb_"..color, node)
 
 	node = table.copy(node_picket)
 	node.description = desc.." Picket Fence"
 	node.tiles = tiles
 	node.drop = "myfences:picket"
 	node.groups.not_in_creative_inventory = 1
-	minetest.register_node("myfences:picket_"..color, node)
+	core.register_node("myfences:picket_"..color, node)
 
 	node = table.copy(node_picket_corner)
 	node.description = desc.." Picket Fence Corner"
 	node.tiles = tiles
 	node.drop = "myfences:picket_corner"
 	node.groups.not_in_creative_inventory = 1
-	minetest.register_node("myfences:picket_corner_"..color, node)
+	core.register_node("myfences:picket_corner_"..color, node)
 
 	node = table.copy(node_picketb_corner)
 	node.description = desc.." Picket Fence Corner"
 	node.tiles = tiles
 	node.drop = "myfences:picketb_corner"
 	node.groups.not_in_creative_inventory = 1
-	minetest.register_node("myfences:picketb_corner_"..color, node)
+	core.register_node("myfences:picketb_corner_"..color, node)
 end
 
-minetest.register_craft({
+core.register_craft({
 	output = "myfences:picket",
 	recipe = {
 		{"","myfences:board",""},
@@ -246,7 +246,7 @@ minetest.register_craft({
 		{"myfences:board","myfences:board","myfences:board"},
 	}
 })
-minetest.register_craft({
+core.register_craft({
 	output = "myfences:picketb",
 	recipe = {
 		{"","",""},
@@ -254,12 +254,12 @@ minetest.register_craft({
 		{"myfences:board","myfences:board","myfences:board"},
 	}
 })
-minetest.register_craft({
+core.register_craft({
 	type = "shapeless",
 	output = "myfences:picket_corner",
 	recipe = {"myfences:picket","myfences:picket"},
 })
-minetest.register_craft({
+core.register_craft({
 	type = "shapeless",
 	output = "myfences:picketb_corner",
 	recipe = {"myfences:picketb","myfences:picketb"},

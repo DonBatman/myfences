@@ -53,21 +53,21 @@ if core.get_modpath("mydye") then
 	}
 end
 
-dofile(minetest.get_modpath("myfences").."/picket.lua")
-dofile(minetest.get_modpath("myfences").."/privacy.lua")
-dofile(minetest.get_modpath("myfences").."/garden.lua")
-dofile(minetest.get_modpath("myfences").."/post.lua")
-dofile(minetest.get_modpath("myfences").."/stick.lua")
-dofile(minetest.get_modpath("myfences").."/short.lua")
+dofile(core.get_modpath("myfences").."/picket.lua")
+dofile(core.get_modpath("myfences").."/privacy.lua")
+dofile(core.get_modpath("myfences").."/garden.lua")
+dofile(core.get_modpath("myfences").."/post.lua")
+dofile(core.get_modpath("myfences").."/stick.lua")
+dofile(core.get_modpath("myfences").."/short.lua")
 if mypaint ~= nil then
-	dofile(minetest.get_modpath("myfences").."/paint.lua")
+	dofile(core.get_modpath("myfences").."/paint.lua")
 end
 
-minetest.register_craftitem("myfences:board", {
+core.register_craftitem("myfences:board", {
 	description = "Default Board",
 	inventory_image = "myfences_board.png",
 })
-minetest.register_craft({
+core.register_craft({
 	type = "shapeless",
 	output = "myfences:board 4",
 	recipe = {"group:wood","group:wood"},
