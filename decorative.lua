@@ -1,7 +1,7 @@
-local node_garden = {
-	description = "Garden Fence",
+local node_decorative = {
+	description = "Decorative Fence",
 	drawtype = "mesh",
-	mesh = "myfences_garden.obj",
+	mesh = "myfences_decorative.obj",
 	tiles = {
 		"myfences_wood.png",
 	},
@@ -23,12 +23,12 @@ local node_garden = {
 	groups = {choppy = 2, flammable = 1},
 	sounds = default.node_sound_stone_defaults(),
 }
-core.register_node("myfences:garden", node_garden)
+core.register_node("myfences:decorative", node_decorative)
 	
-local node_garden_corner = {
-	description = "Garden Fence Corner",
+local node_decorative_corner = {
+	description = "Decorative Fence Corner",
 	drawtype = "mesh",
-	mesh = "myfences_garden_corner.obj",
+	mesh = "myfences_decorative_corner.obj",
 	tiles = {
 		"myfences_wood.png",
 	},
@@ -42,10 +42,17 @@ local node_garden_corner = {
 			{0.25,-0.5,-0.5,0.5,0.5,0.5},
 		}
 	},
+	collision_box = {
+		type = "fixed",
+		fixed = {
+			{-0.5,-0.5,0.25,0.5,0.5,0.5},
+			{0.25,-0.5,-0.5,0.5,0.5,0.5},
+		}
+	},
 	groups = {choppy = 2, flammable = 1},
 	sounds = default.node_sound_stone_defaults(),
 }
-core.register_node("myfences:garden_corner", node_garden_corner)
+core.register_node("myfences:decorative_corner", node_decorative_corner)
 
 for _, entry in ipairs(myfences.colors) do
 	local color = entry[1]
@@ -56,13 +63,13 @@ for _, entry in ipairs(myfences.colors) do
 		"myfences_wood.png"..stain,
 	}
 
-local node_garden_gate = {
-	description = "Garden Gate",
+local node_decorative_gate = {
+	description = "Decorative Gate",
 	tiles = {
 		"myfences_wood.png",
 		},
 	drawtype = "mesh",
-	mesh = "myfences_garden.obj",
+	mesh = "myfences_decorative.obj",
 	paramtype = "light",
 	paramtype2 = "facedir",
 	groups = {cracky=2},
@@ -81,25 +88,24 @@ local node_garden_gate = {
 	on_rightclick = function(pos, node, player, itemstack, pointed_thing)
 		local p2 = node.param2
 		local dir = core.facedir_to_dir(p2)
-		if node.name == "myfences:garden_gate_"..color then
-			core.set_node(pos, {name="myfences:garden_gate_open_"..color,  param2=p2})
+		if node.name == "myfences:decorative_gate_"..color then
+			core.set_node(pos, {name="myfences:decorative_gate_open_"..color,  param2=p2})
 		else
-			core.set_node(pos, {name="myfences:garden_gate_open",  param2=p2})
+			core.set_node(pos, {name="myfences:decorative_gate_open",  param2=p2})
 		end
 	end
 }
-core.register_node("myfences:garden_gate", node_garden_gate)
+core.register_node("myfences:decorative_gate", node_decorative_gate)
 
-local node_garden_gate_open = {
-	description = "Garden Gate Open",
+local node_decorative_gate_open = {
+	description = "Decorative Gate Open",
 	tiles = {
 		"myfences_wood.png",
 		},
 	drawtype = "mesh",
-	mesh = "myfences_garden_gate_open.obj",
+	mesh = "myfences_decorative_gate_open.obj",
 	paramtype = "light",
 	paramtype2 = "facedir",
-	drops = "myfences:garden_gate",
 	groups = {cracky=2,not_in_creative_inventory = 1},
 	selection_box = {
 		type = "fixed",
@@ -116,46 +122,46 @@ local node_garden_gate_open = {
 	on_rightclick = function(pos, node, player, itemstack, pointed_thing)
 		local p2 = node.param2
 		local dir = core.facedir_to_dir(p2)
-		if node.name == "myfences:garden_gate_open_"..color then
-			core.set_node(pos, {name="myfences:garden_gate_"..color,  param2=p2})
+		if node.name == "myfences:decorative_gate_open_"..color then
+			core.set_node(pos, {name="myfences:decorative_gate_"..color,  param2=p2})
 		else
-			core.set_node(pos, {name="myfences:garden_gate",  param2=p2})
+			core.set_node(pos, {name="myfences:decorative_gate",  param2=p2})
 		end
 	end
 }
-core.register_node("myfences:garden_gate_open", node_garden_gate_open)
+core.register_node("myfences:decorative_gate_open", node_decorative_gate_open)
 
-	local node = table.copy(node_garden)
-	node.description = desc.." Garden Fence"
+	local node = table.copy(node_decorative)
+	node.description = desc.." Decorative Fence"
 	node.tiles = tiles
-	node.drop = "myfences:garden"
+	node.drop = "myfences:decorative"
 	node.groups.not_in_creative_inventory = 1
-	core.register_node("myfences:garden_"..color, node)
+	core.register_node("myfences:decorative_"..color, node)
 
-	node = table.copy(node_garden_corner)
-	node.description = desc.." Garden Fence Corner"
+	node = table.copy(node_decorative_corner)
+	node.description = desc.." Decorative Fence Corner"
 	node.tiles = tiles
-	node.drop = "myfences:garden_corner"
+	node.drop = "myfences:decorative_corner"
 	node.groups.not_in_creative_inventory = 1
-	core.register_node("myfences:garden_corner_"..color, node)
-	
-	local node = table.copy(node_garden_gate)
-	node.description = desc.." Garden Gate"
+	core.register_node("myfences:decorative_corner_"..color, node)
+
+	local node = table.copy(node_decorative_gate)
+	node.description = desc.." Decorative Gate"
 	node.tiles = tiles
-	node.drop = "myfences:garden_gate"
+	node.drop = "myfences:decorative_gate"
 	node.groups.not_in_creative_inventory = 1
-	core.register_node("myfences:garden_gate_"..color, node)
-	
-	local node = table.copy(node_garden_gate_open)
-	node.description = desc.." Garden Gate Open"
+	core.register_node("myfences:decorative_gate_"..color, node)
+
+	local node = table.copy(node_decorative_gate_open)
+	node.description = desc.." Decorative Gate Open"
 	node.tiles = tiles
-	node.drop = "myfences:garden_gate"
+	node.drop = "myfences:decorative_gate"
 	node.groups.not_in_creative_inventory = 1
-	core.register_node("myfences:garden_gate_open_"..color, node)
+	core.register_node("myfences:decorative_gate_open_"..color, node)
 end
 
 core.register_craft({
-	output = "myfences:garden",
+	output = "myfences:decorative",
 	recipe = {
 		{"","",""},
 		{"myfences:board","myfences:board","myfences:board"},
@@ -164,12 +170,12 @@ core.register_craft({
 })
 core.register_craft({
 	type = "shapeless",
-	output = "myfences:garden_corner",
-	recipe = {"myfences:garden","myfences:garden"},
+	output = "myfences:decorative_corner",
+	recipe = {"myfences:decorative","myfences:decorative"},
 })
 core.register_craft({
 	type = "shapeless",
-	output = "myfences:garden_gate",
-	recipe = {"myfences:garden","default:steel_ingot"},
+	output = "myfences:decorative_gate",
+	recipe = {"myfences:decorative","default:steel_ingot"},
 })
 

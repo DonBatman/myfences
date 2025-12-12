@@ -1,7 +1,7 @@
-local node_garden = {
-	description = "Garden Fence",
+local node_neighbor = {
+	description = "Neighbor Fence",
 	drawtype = "mesh",
-	mesh = "myfences_garden.obj",
+	mesh = "myfences_neighbor.obj",
 	tiles = {
 		"myfences_wood.png",
 	},
@@ -23,12 +23,12 @@ local node_garden = {
 	groups = {choppy = 2, flammable = 1},
 	sounds = default.node_sound_stone_defaults(),
 }
-core.register_node("myfences:garden", node_garden)
+core.register_node("myfences:neighbor", node_neighbor)
 	
-local node_garden_corner = {
-	description = "Garden Fence Corner",
+local node_neighbor_corner = {
+	description = "Neighbor Fence Corner",
 	drawtype = "mesh",
-	mesh = "myfences_garden_corner.obj",
+	mesh = "myfences_neighbor_corner.obj",
 	tiles = {
 		"myfences_wood.png",
 	},
@@ -42,10 +42,17 @@ local node_garden_corner = {
 			{0.25,-0.5,-0.5,0.5,0.5,0.5},
 		}
 	},
+	collision_box = {
+		type = "fixed",
+		fixed = {
+			{-0.5,-0.5,0.25,0.5,0.5,0.5},
+			{0.25,-0.5,-0.5,0.5,0.5,0.5},
+		}
+	},
 	groups = {choppy = 2, flammable = 1},
 	sounds = default.node_sound_stone_defaults(),
 }
-core.register_node("myfences:garden_corner", node_garden_corner)
+core.register_node("myfences:neighbor_corner", node_neighbor_corner)
 
 for _, entry in ipairs(myfences.colors) do
 	local color = entry[1]
@@ -56,13 +63,13 @@ for _, entry in ipairs(myfences.colors) do
 		"myfences_wood.png"..stain,
 	}
 
-local node_garden_gate = {
-	description = "Garden Gate",
+local node_neighbor_gate = {
+	description = "Neighbor Gate",
 	tiles = {
 		"myfences_wood.png",
 		},
 	drawtype = "mesh",
-	mesh = "myfences_garden.obj",
+	mesh = "myfences_neighbor.obj",
 	paramtype = "light",
 	paramtype2 = "facedir",
 	groups = {cracky=2},
@@ -81,25 +88,24 @@ local node_garden_gate = {
 	on_rightclick = function(pos, node, player, itemstack, pointed_thing)
 		local p2 = node.param2
 		local dir = core.facedir_to_dir(p2)
-		if node.name == "myfences:garden_gate_"..color then
-			core.set_node(pos, {name="myfences:garden_gate_open_"..color,  param2=p2})
+		if node.name == "myfences:neighbor_gate_"..color then
+			core.set_node(pos, {name="myfences:neighbor_gate_open_"..color,  param2=p2})
 		else
-			core.set_node(pos, {name="myfences:garden_gate_open",  param2=p2})
+			core.set_node(pos, {name="myfences:neighbor_gate_open",  param2=p2})
 		end
 	end
 }
-core.register_node("myfences:garden_gate", node_garden_gate)
+core.register_node("myfences:neighbor_gate", node_neighbor_gate)
 
-local node_garden_gate_open = {
-	description = "Garden Gate Open",
+local node_neighbor_gate_open = {
+	description = "Neighbor Gate Open",
 	tiles = {
 		"myfences_wood.png",
 		},
 	drawtype = "mesh",
-	mesh = "myfences_garden_gate_open.obj",
+	mesh = "myfences_neighbor_gate_open.obj",
 	paramtype = "light",
 	paramtype2 = "facedir",
-	drops = "myfences:garden_gate",
 	groups = {cracky=2,not_in_creative_inventory = 1},
 	selection_box = {
 		type = "fixed",
@@ -116,46 +122,46 @@ local node_garden_gate_open = {
 	on_rightclick = function(pos, node, player, itemstack, pointed_thing)
 		local p2 = node.param2
 		local dir = core.facedir_to_dir(p2)
-		if node.name == "myfences:garden_gate_open_"..color then
-			core.set_node(pos, {name="myfences:garden_gate_"..color,  param2=p2})
+		if node.name == "myfences:neighbor_gate_open_"..color then
+			core.set_node(pos, {name="myfences:neighbor_gate_"..color,  param2=p2})
 		else
-			core.set_node(pos, {name="myfences:garden_gate",  param2=p2})
+			core.set_node(pos, {name="myfences:neighbor_gate",  param2=p2})
 		end
 	end
 }
-core.register_node("myfences:garden_gate_open", node_garden_gate_open)
+core.register_node("myfences:neighbor_gate_open", node_neighbor_gate_open)
 
-	local node = table.copy(node_garden)
-	node.description = desc.." Garden Fence"
+	local node = table.copy(node_neighbor)
+	node.description = desc.." Neighbor Fence"
 	node.tiles = tiles
-	node.drop = "myfences:garden"
+	node.drop = "myfences:neighbor"
 	node.groups.not_in_creative_inventory = 1
-	core.register_node("myfences:garden_"..color, node)
+	core.register_node("myfences:neighbor_"..color, node)
 
-	node = table.copy(node_garden_corner)
-	node.description = desc.." Garden Fence Corner"
+	node = table.copy(node_neighbor_corner)
+	node.description = desc.." Neighbor Fence Corner"
 	node.tiles = tiles
-	node.drop = "myfences:garden_corner"
+	node.drop = "myfences:neighbor_corner"
 	node.groups.not_in_creative_inventory = 1
-	core.register_node("myfences:garden_corner_"..color, node)
-	
-	local node = table.copy(node_garden_gate)
-	node.description = desc.." Garden Gate"
+	core.register_node("myfences:neighbor_corner_"..color, node)
+
+	local node = table.copy(node_neighbor_gate)
+	node.description = desc.." Neighbor Gate"
 	node.tiles = tiles
-	node.drop = "myfences:garden_gate"
+	node.drop = "myfences:neighbor_gate"
 	node.groups.not_in_creative_inventory = 1
-	core.register_node("myfences:garden_gate_"..color, node)
-	
-	local node = table.copy(node_garden_gate_open)
-	node.description = desc.." Garden Gate Open"
+	core.register_node("myfences:neighbor_gate_"..color, node)
+
+	local node = table.copy(node_neighbor_gate_open)
+	node.description = desc.." Neighbor Gate Open"
 	node.tiles = tiles
-	node.drop = "myfences:garden_gate"
+	node.drop = "myfences:neighbor_gate"
 	node.groups.not_in_creative_inventory = 1
-	core.register_node("myfences:garden_gate_open_"..color, node)
+	core.register_node("myfences:neighbor_gate_open_"..color, node)
 end
 
 core.register_craft({
-	output = "myfences:garden",
+	output = "myfences:neighbor",
 	recipe = {
 		{"","",""},
 		{"myfences:board","myfences:board","myfences:board"},
@@ -164,12 +170,12 @@ core.register_craft({
 })
 core.register_craft({
 	type = "shapeless",
-	output = "myfences:garden_corner",
-	recipe = {"myfences:garden","myfences:garden"},
+	output = "myfences:neighbor_corner",
+	recipe = {"myfences:neighbor","myfences:neighbor"},
 })
 core.register_craft({
 	type = "shapeless",
-	output = "myfences:garden_gate",
-	recipe = {"myfences:garden","default:steel_ingot"},
+	output = "myfences:neighbor_gate",
+	recipe = {"myfences:neighbor","default:steel_ingot"},
 })
 

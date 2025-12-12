@@ -56,9 +56,14 @@ end
 dofile(core.get_modpath("myfences").."/picket.lua")
 dofile(core.get_modpath("myfences").."/privacy.lua")
 dofile(core.get_modpath("myfences").."/garden.lua")
+dofile(core.get_modpath("myfences").."/garden2.lua")
 dofile(core.get_modpath("myfences").."/post.lua")
 dofile(core.get_modpath("myfences").."/stick.lua")
 dofile(core.get_modpath("myfences").."/short.lua")
+dofile(core.get_modpath("myfences").."/short2.lua")
+dofile(core.get_modpath("myfences").."/decorative.lua")
+dofile(core.get_modpath("myfences").."/neighbor.lua")
+dofile(core.get_modpath("myfences").."/privacy_with_lattice.lua")
 if mypaint ~= nil then
 	dofile(core.get_modpath("myfences").."/paint.lua")
 end

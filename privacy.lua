@@ -1,29 +1,13 @@
 local node_privacy = {
 	description = "Privacy Fence",
-	drawtype = "nodebox",
+	drawtype = "mesh",
+	mesh = "myfences_privacy.obj",
 	tiles = {
 		"myfences_wood.png",
-		"myfences_wood.png",
-		"myfences_wood.png^[transformR90",
-		"myfences_wood.png^[transformR90",
-		"myfences_wood.png^[transformR90",
-		"myfences_wood.png^[transformR90",
 	},
 	paramtype = "light",
 	paramtype2 = "facedir",
 	sunlight_propogates = true,
-	node_box = {
-		type = "fixed",
-		fixed = {
-			{-0.5, -0.5, 0.1875, -0.375, 0.5, 0.4375},
-			{0.375, -0.5, 0.1875, 0.5, 0.5, 0.4375},
-			{-0.375, -0.375, 0.3125, 0.375, -0.1875, 0.4375},
-			{-0.375, 0.1875, 0.3125, 0.375, 0.375, 0.4375},
-			{-0.4896, -0.5, 0.4375, -0.1772, 0.5, 0.5},
-			{-0.1458, -0.5, 0.4375, 0.1458, 0.5, 0.5},
-			{0.1772, -0.5, 0.4375, 0.4896, 0.5, 0.5},
-		}
-	},
 	selection_box = {
 		type = "fixed",
 		fixed = {
@@ -37,37 +21,14 @@ core.register_node("myfences:privacy", node_privacy)
 
 local node_privacy_corner = {
 	description = "Privacy Fence Corner",
-	drawtype = "nodebox",
+	drawtype = "mesh",
+	mesh = "myfences_privacy_corner.obj",
 	tiles = {
 		"myfences_wood.png",
-		"myfences_wood.png",
-		"myfences_wood.png^[transformR90",
-		"myfences_wood.png^[transformR90",
-		"myfences_wood.png^[transformR90",
-		"myfences_wood.png^[transformR90",
 	},
 	paramtype = "light",
 	paramtype2 = "facedir",
 	sunlight_propogates = true,
-	node_box = {
-		type = "fixed",
-		fixed = {
-			{-0.5, -0.5, 0.1875, -0.375, 0.5, 0.4375},
-			{0.1875, -0.5, 0.1875, 0.4375, 0.5, 0.4375},
-			{-0.375, -0.375, 0.3125, 0.375, -0.1875, 0.4375},
-			{-0.375, 0.1875, 0.3125, 0.375, 0.375, 0.4375},
-			{-0.4896, -0.5, 0.4375, -0.1772, 0.5, 0.5},
-			{-0.1458, -0.5, 0.4375, 0.1458, 0.5, 0.5},
-			{0.1772, -0.5, 0.4375, 0.4896, 0.5, 0.5},
-			
-			{0.1875, -0.5, -0.5, 0.4375, 0.5, -0.375},
-			{0.3125, -0.375, -0.375, 0.4375, -0.1875, 0.375},
-			{0.3125, 0.1875, -0.375, 0.4375, 0.375, 0.375},
-			{0.4375, -0.5, 0.1772, 0.5, 0.5, 0.4896},
-			{0.4375, -0.5, -0.1458, 0.5, 0.5, 0.1458},
-			{0.4375, -0.5, -0.4896, 0.5, 0.5, -0.1772},
-		}
-	},
 	selection_box = {
 		type = "fixed",
 		fixed = {
@@ -87,12 +48,76 @@ for _, entry in ipairs(myfences.colors) do
 
 	local tiles = {
 		"myfences_wood.png"..stain,
-		"myfences_wood.png"..stain,
-		"myfences_wood.png^[transformR90"..stain,
-		"myfences_wood.png^[transformR90"..stain,
-		"myfences_wood.png^[transformR90"..stain,
-		"myfences_wood.png^[transformR90"..stain,
 	}
+
+local node_privacy_gate = {
+	description = "Privacy Gate",
+	tiles = {
+		"myfences_wood.png",
+		},
+	drawtype = "mesh",
+	mesh = "myfences_privacy.obj",
+	paramtype = "light",
+	paramtype2 = "facedir",
+	groups = {cracky=2},
+	selection_box = {
+		type = "fixed",
+		fixed = {
+			{-0.5, -0.5, 0.5, 0.5, 0.5, 0.325}, 
+		}
+	},
+	collision_box = {
+		type = "fixed",
+		fixed = {
+			{-0.5, -0.5, 0.5, 0.5, 0.5, 0.325}, 
+		}
+	},
+	on_rightclick = function(pos, node, player, itemstack, pointed_thing)
+		local p2 = node.param2
+		local dir = core.facedir_to_dir(p2)
+		if node.name == "myfences:privacy_gate_"..color then
+			core.set_node(pos, {name="myfences:privacy_gate_open_"..color,  param2=p2})
+		else
+			core.set_node(pos, {name="myfences:privacy_gate_open",  param2=p2})
+		end
+	end
+}
+core.register_node("myfences:privacy_gate", node_privacy_gate)
+
+local node_privacy_gate_open = {
+	description = "Privacy Gate Open",
+	tiles = {
+		"myfences_wood.png",
+		},
+	drawtype = "mesh",
+	mesh = "myfences_privacy_gate_open.obj",
+	paramtype = "light",
+	paramtype2 = "facedir",
+	drops = "myfences:privacy_gate",
+	groups = {cracky=2,not_in_creative_inventory = 1},
+	selection_box = {
+		type = "fixed",
+		fixed = {
+			{-0.5, -0.5, -0.5, -0.325, 0.5, 0.5}, 
+		}
+	},
+	collision_box = {
+		type = "fixed",
+		fixed = {
+			{-0.5, -0.5, -0.5, -0.325, 0.5, 0.5}, 
+		}
+	},
+	on_rightclick = function(pos, node, player, itemstack, pointed_thing)
+		local p2 = node.param2
+		local dir = core.facedir_to_dir(p2)
+		if node.name == "myfences:privacy_gate_open_"..color then
+			core.set_node(pos, {name="myfences:privacy_gate_"..color,  param2=p2})
+		else
+			core.set_node(pos, {name="myfences:privacy_gate",  param2=p2})
+		end
+	end
+}
+core.register_node("myfences:privacy_gate_open", node_privacy_gate_open)
 
 	local node = table.copy(node_privacy)
 	node.description = desc.." Privacy Fence"
@@ -107,6 +132,20 @@ for _, entry in ipairs(myfences.colors) do
 	node.drop = "myfences:privacy_corner"
 	node.groups.not_in_creative_inventory = 1
 	core.register_node("myfences:privacy_corner_"..color, node)
+
+	local node = table.copy(node_privacy_gate)
+	node.description = desc.." Privacy Gate"
+	node.tiles = tiles
+	node.drop = "myfences:privacy_gate"
+	node.groups.not_in_creative_inventory = 1
+	core.register_node("myfences:privacy_gate_"..color, node)
+
+	local node = table.copy(node_privacy_gate_open)
+	node.description = desc.." Privacy Gate Open"
+	node.tiles = tiles
+	node.drop = "myfences:privacy_gate"
+	node.groups.not_in_creative_inventory = 1
+	core.register_node("myfences:privacy_gate_open_"..color, node)
 end
 
 core.register_craft({
@@ -122,4 +161,10 @@ core.register_craft({
 	output = "myfences:privacy_corner",
 	recipe = {"myfences:privacy","myfences:privacy"},
 })
+core.register_craft({
+	type = "shapeless",
+	output = "myfences:privacy_gate",
+	recipe = {"myfences:privacy","default:steel_ingot"},
+})
+
 

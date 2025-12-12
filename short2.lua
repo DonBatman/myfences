@@ -1,7 +1,7 @@
-local node_stick = {
-	description = "Stick Fence",
+local node_short2 = {
+	description = "Short 2 Fence",
 	drawtype = "mesh",
-	mesh = "myfences_stick.obj",
+	mesh = "myfences_short2.obj",
 	tiles = {
 		"myfences_wood.png",
 	},
@@ -14,15 +14,21 @@ local node_stick = {
 			{-0.5,-0.5,0.25,0.5,0.5,0.5},
 		}
 	},
+	collision_box = {
+		type = "fixed",
+		fixed = {
+			{-0.5,-0.5,0.25,0.5,0.5,0.5},
+		}
+	},
 	groups = {choppy = 2, flammable = 1},
 	sounds = default.node_sound_stone_defaults(),
 }
-core.register_node("myfences:stick", node_stick)
+core.register_node("myfences:short2", node_short2)
 	
-local node_stick_corner = {
-	description = "Stick Fence Corner",
+local node_short2_corner = {
+	description = "Short 2 Fence Corner",
 	drawtype = "mesh",
-	mesh = "myfences_stick_corner.obj",
+	mesh = "myfences_short2_corner.obj",
 	tiles = {
 		"myfences_wood.png",
 	},
@@ -33,13 +39,13 @@ local node_stick_corner = {
 		type = "fixed",
 		fixed = {
 			{-0.5,-0.5,0.25,0.5,0.5,0.5},
-			{0.5,-0.5,-0.5,0.25,0.5,0.5},
+			{0.25,-0.5,-0.5,0.5,0.5,0.5},
 		}
 	},
 	groups = {choppy = 2, flammable = 1},
 	sounds = default.node_sound_stone_defaults(),
 }
-core.register_node("myfences:stick_corner", node_stick_corner)
+core.register_node("myfences:short2_corner", node_short2_corner)
 
 for _, entry in ipairs(myfences.colors) do
 	local color = entry[1]
@@ -50,13 +56,13 @@ for _, entry in ipairs(myfences.colors) do
 		"myfences_wood.png"..stain,
 	}
 
-local node_stick_gate = {
-	description = "Stick Gate",
+local node_short2_gate = {
+	description = "Short 2 Gate",
 	tiles = {
 		"myfences_wood.png",
 		},
 	drawtype = "mesh",
-	mesh = "myfences_stick.obj",
+	mesh = "myfences_short2.obj",
 	paramtype = "light",
 	paramtype2 = "facedir",
 	groups = {cracky=2},
@@ -75,26 +81,26 @@ local node_stick_gate = {
 	on_rightclick = function(pos, node, player, itemstack, pointed_thing)
 		local p2 = node.param2
 		local dir = core.facedir_to_dir(p2)
-		if node.name == "myfences:stick_gate_"..color then
-			core.set_node(pos, {name="myfences:stick_gate_open_"..color,  param2=p2})
+		if node.name == "myfences:short2_gate_"..color then
+			core.set_node(pos, {name="myfences:short2_gate_open_"..color,  param2=p2})
 		else
-			core.set_node(pos, {name="myfences:stick_gate_open",  param2=p2})
+			core.set_node(pos, {name="myfences:short2_gate_open",  param2=p2})
 		end
 	end
 }
-core.register_node("myfences:stick_gate", node_stick_gate)
+core.register_node("myfences:short2_gate", node_short2_gate)
 
-local node_stick_gate_open = {
-	description = "Stick Gate Open",
+local node_short2_gate_open = {
+	description = "Short 2 Gate Open",
 	tiles = {
 		"myfences_wood.png",
 		},
 	drawtype = "mesh",
-	mesh = "myfences_stick_gate_open.obj",
+	mesh = "myfences_short2_gate_open.obj",
 	paramtype = "light",
 	paramtype2 = "facedir",
-	drops = "myfences:stick_gate",
-	groups = {cracky=2,not_in_creative_inventory = 1},
+	drops = "myfences_short2_gate",
+	groups = {cracky=2, not_in_creative_inventory = 1},
 	selection_box = {
 		type = "fixed",
 		fixed = {
@@ -110,59 +116,60 @@ local node_stick_gate_open = {
 	on_rightclick = function(pos, node, player, itemstack, pointed_thing)
 		local p2 = node.param2
 		local dir = core.facedir_to_dir(p2)
-		if node.name == "myfences:stick_gate_open_"..color then
-			core.set_node(pos, {name="myfences:stick_gate_"..color,  param2=p2})
+		if node.name == "myfences:short2_gate_open_"..color then
+			core.set_node(pos, {name="myfences:short2_gate_"..color,  param2=p2})
 		else
-			core.set_node(pos, {name="myfences:stick_gate",  param2=p2})
+			core.set_node(pos, {name="myfences:short2_gate",  param2=p2})
 		end
 	end
 }
-core.register_node("myfences:stick_gate_open", node_stick_gate_open)
+core.register_node("myfences:short2_gate_open", node_short2_gate_open)
 
-	local node = table.copy(node_stick)
-	node.description = desc.." Stick Fence"
+	local node = table.copy(node_short2)
+	node.description = desc.." Short 2 Fence"
 	node.tiles = tiles
-	node.drop = "myfences:stick"
+	node.drop = "myfences:short2"
 	node.groups.not_in_creative_inventory = 1
-	core.register_node("myfences:stick_"..color, node)
+	core.register_node("myfences:short2_"..color, node)
 
-	node = table.copy(node_stick_corner)
-	node.description = desc.." Stick Fence Corner"
+	node = table.copy(node_short2_corner)
+	node.description = desc.." Short 2 Fence Corner"
 	node.tiles = tiles
-	node.drop = "myfences:stick_corner"
+	node.drop = "myfences:short2_corner"
 	node.groups.not_in_creative_inventory = 1
-	core.register_node("myfences:stick_corner_"..color, node)
-
-	local node = table.copy(node_stick_gate)
-	node.description = desc.." Stick Gate"
+	core.register_node("myfences:short2_corner_"..color, node)
+	
+	local node = table.copy(node_short2_gate)
+	node.description = desc.." Short 2 Gate"
 	node.tiles = tiles
-	node.drop = "myfences:stick_gate"
+	node.drop = "myfences:short2_gate"
 	node.groups.not_in_creative_inventory = 1
-	core.register_node("myfences:stick_gate_"..color, node)
-
-	local node = table.copy(node_stick_gate_open)
-	node.description = desc.." Stick Gate Open"
+	core.register_node("myfences:short2_gate_"..color, node)
+	
+	local node = table.copy(node_short2_gate_open)
+	node.description = desc.." Short 2 Gate Open"
 	node.tiles = tiles
-	node.drop = "myfences:stick_gate"
+	node.drop = "myfences:short2_gate"
 	node.groups.not_in_creative_inventory = 1
-	core.register_node("myfences:stick_gate_open_"..color, node)
+	core.register_node("myfences:short2_gate_open_"..color, node)
 end
+
 core.register_craft({
-	output = "myfences:stick",
+	output = "myfences:short2",
 	recipe = {
 		{"","",""},
 		{"myfences:board","myfences:board","myfences:board"},
-		{"default:stick","myfences:board","default:stick"},
+		{"default:wood","myfences:board","default:wood"},
 	}
 })
 core.register_craft({
 	type = "shapeless",
-	output = "myfences:stick_corner",
-	recipe = {"myfences:stick","myfences:stick"},
+	output = "myfences:short2_corner",
+	recipe = {"myfences:short2","myfences:short2"},
 })
 core.register_craft({
 	type = "shapeless",
-	output = "myfences:stick_gate",
-	recipe = {"myfences:stick","default:steel_ingot"},
+	output = "myfences:short2_gate",
+	recipe = {"myfences:short2","default:steel_ingot"},
 })
 

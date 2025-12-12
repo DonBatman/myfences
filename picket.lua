@@ -1,76 +1,34 @@
-local node_picketb = {
-	description = "Picket Fence",
-	drawtype = "nodebox",
-	tiles = {
-		"myfences_wood.png",
-		"myfences_wood.png",
-		"myfences_wood.png^[transformR90",
-		"myfences_wood.png^[transformR90",
-		"myfences_wood.png^[transformR90",
-		"myfences_wood.png^[transformR90",
-	},
-	paramtype = "light",
-	paramtype2 = "facedir",
-	sunlight_propogates = true,
-	node_box = {
-		type = "fixed",
-		fixed = {
-			{-0.5, -0.5, 0.25, -0.4375, 0.1875, 0.4375},
-			{0.4375, -0.5, 0.25, 0.5, 0.1875, 0.4375},
-			{-0.2187, -0.5, 0.4375, -0.0313, 0.375, 0.5},
-			{0.0312, -0.5, 0.4375, 0.2187, 0.375, 0.5},
-			{0.2812, -0.5, 0.4375, 0.4687, 0.375, 0.5},
-			{-0.4687, -0.5, 0.4375, -0.2812, 0.375, 0.5},
-			{-0.5, 0.125, 0.25, 0.5, 0.1875, 0.4375},
-			{-0.5, -0.375, 0.25, 0.5, -0.3125, 0.4375},
-		}
-	},
-	selection_box = {
-		type = "fixed",
-		fixed = {
-			{-0.5,-0.5,0.25,0.5,0.5,0.5},
-		}
-	},
-	groups = {choppy = 2, flammable = 1},
-	sounds = default.node_sound_stone_defaults(),
-}
-core.register_node("myfences:picketb", node_picketb)
-
 local node_picket = {
 	description = "Picket Fence",
-	drawtype = "nodebox",
+	drawtype = "mesh",
+	mesh = "myfences_picket.obj", 
 	tiles = {
 		"myfences_wood.png",
-		"myfences_wood.png",
-		"myfences_wood.png^[transformR90",
-		"myfences_wood.png^[transformR90",
-		"myfences_wood.png^[transformR90",
-		"myfences_wood.png^[transformR90",
 	},
 	paramtype = "light",
 	paramtype2 = "facedir",
 	sunlight_propogates = true,
-	node_box = {
+	selection_box = {
 		type = "fixed",
 		fixed = {
-			{-0.5, -0.5, 0.25, -0.4375, 0.1875, 0.4375},
-			{0.4375, -0.5, 0.25, 0.5, 0.1875, 0.4375},
-			{-0.2187, -0.5, 0.4375, -0.0313, 0.375, 0.5},
-			{0.0312, -0.5, 0.4375, 0.2187, 0.375, 0.5},
-			{0.2812, -0.5, 0.4375, 0.4687, 0.375, 0.5},
-			{-0.4687, -0.5, 0.4375, -0.2812, 0.375, 0.5},
-			{-0.5, 0.125, 0.25, 0.5, 0.1875, 0.4375},
-			{-0.5, -0.375, 0.25, 0.5, -0.3125, 0.4375},
-			{-0.4375, 0.375, 0.4375, -0.3125, 0.4375, 0.5},
-			{-0.1875, 0.375, 0.4375, -0.0625, 0.4375, 0.5},
-			{0.0625, 0.375, 0.4375, 0.1875, 0.4375, 0.5},
-			{0.3125, 0.375, 0.4375, 0.4375, 0.4375, 0.5},
-			{-0.4087, 0.4375, 0.4375, -0.3437, 0.5, 0.5},
-			{-0.1562, 0.4375, 0.4375, -0.0937, 0.5, 0.5},
-			{0.0948, 0.4375, 0.4375, 0.1563, 0.5, 0.5},
-			{0.3448, 0.4375, 0.4375, 0.4063, 0.5, 0.5},
+			{-0.5,-0.5,0.25,0.5,0.5,0.5},
 		}
 	},
+	groups = {choppy = 2, flammable = 1},
+	sounds = default.node_sound_stone_defaults(),
+}
+core.register_node("myfences:picket", node_picket)
+
+local node_picketb = {
+	description = "Picket Fence",
+	drawtype = "mesh",
+	mesh = "myfences_picketb.obj",
+	tiles = {
+		"myfences_wood.png",
+	},
+	paramtype = "light",
+	paramtype2 = "facedir",
+	sunlight_propogates = true,
 	selection_box = {
 		type = "fixed",
 		fixed = {
@@ -81,60 +39,18 @@ local node_picket = {
 	sounds = default.node_sound_stone_defaults(),
 }
 
-core.register_node("myfences:picket", node_picket)
+core.register_node("myfences:picketb", node_picketb)
 
 local node_picket_corner = {
 	description = "Picket Fence Corner",
-	drawtype = "nodebox",
+	drawtype = "mesh",
+	mesh = "myfences_picket_corner.obj",
 	tiles = {
 		"myfences_wood.png",
-		"myfences_wood.png",
-		"myfences_wood.png^[transformR90",
-		"myfences_wood.png^[transformR90",
-		"myfences_wood.png^[transformR90",
-		"myfences_wood.png^[transformR90",
 	},
 	paramtype = "light",
 	paramtype2 = "facedir",
 	sunlight_propogates = true,
-	node_box = {
-		type = "fixed",
-		fixed = {
-			{-0.5, -0.5, 0.25, -0.4375, 0.1875, 0.4375},
-			{0.4375, -0.5, 0.25, 0.5, 0.1875, 0.4375},
-			{-0.2187, -0.5, 0.4375, -0.0313, 0.375, 0.5},
-			{0.0312, -0.5, 0.4375, 0.2187, 0.375, 0.5},
-			{0.2812, -0.5, 0.4375, 0.4687, 0.375, 0.5},
-			{-0.4687, -0.5, 0.4375, -0.2812, 0.375, 0.5},
-			{-0.5, 0.125, 0.25, 0.5, 0.1875, 0.4375},
-			{-0.5, -0.375, 0.25, 0.5, -0.3125, 0.4375},
-			{-0.4375, 0.375, 0.4375, -0.3125, 0.4375, 0.5},
-			{-0.1875, 0.375, 0.4375, -0.0625, 0.4375, 0.5},
-			{0.0625, 0.375, 0.4375, 0.1875, 0.4375, 0.5},
-			{0.3125, 0.375, 0.4375, 0.4375, 0.4375, 0.5},
-			{-0.4087, 0.4375, 0.4375, -0.3437, 0.5, 0.5},
-			{-0.1562, 0.4375, 0.4375, -0.0937, 0.5, 0.5},
-			{0.0948, 0.4375, 0.4375, 0.1563, 0.5, 0.5},
-			{0.3448, 0.4375, 0.4375, 0.4063, 0.5, 0.5},
-			
-			{0.25, -0.5, 0.4375, 0.4375, 0.1875, 0.5},
-			{0.25, -0.5, -0.5, 0.4375, 0.1875, -0.4375},
-			{0.4375, -0.5, 0.0313, 0.5, 0.375, 0.2187},
-			{0.4375, -0.5, -0.2187, 0.5, 0.375, -0.0312},
-			{0.4375, -0.5, -0.4687, 0.5, 0.375, -0.2812},
-			{0.4375, -0.5, 0.2812, 0.5, 0.375, 0.4687},
-			{0.25, 0.125, -0.5, 0.4375, 0.1875, 0.5},
-			{0.25, -0.375, -0.5, 0.4375, -0.3125, 0.5},
-			{0.4375, 0.375, 0.3125, 0.5, 0.4375, 0.4375},
-			{0.4375, 0.375, 0.0625, 0.5, 0.4375, 0.1875},
-			{0.4375, 0.375, -0.1875, 0.5, 0.4375, -0.0625},
-			{0.4375, 0.375, -0.4375, 0.5, 0.4375, -0.3125},
-			{0.4375, 0.4375, 0.3437, 0.5, 0.5, 0.4087},
-			{0.4375, 0.4375, 0.0937, 0.5, 0.5, 0.1562},
-			{0.4375, 0.4375, -0.1563, 0.5, 0.5, -0.0948},
-			{0.4375, 0.4375, -0.4063, 0.5, 0.5, -0.3448},
-		}
-	},
 	selection_box = {
 		type = "fixed",
 		fixed = {
@@ -149,40 +65,14 @@ core.register_node("myfences:picket_corner", node_picket_corner)
 
 local node_picketb_corner = {
 	description = "Picket Fence Corner",
-	drawtype = "nodebox",
+	drawtype = "mesh",
+	mesh = "myfences_picketb_corner.obj",
 	tiles = {
 		"myfences_wood.png",
-		"myfences_wood.png",
-		"myfences_wood.png^[transformR90",
-		"myfences_wood.png^[transformR90",
-		"myfences_wood.png^[transformR90",
-		"myfences_wood.png^[transformR90",
 	},
 	paramtype = "light",
 	paramtype2 = "facedir",
 	sunlight_propogates = true,
-	node_box = {
-		type = "fixed",
-		fixed = {
-			{-0.5, -0.5, 0.25, -0.4375, 0.1875, 0.4375},
-			{0.4375, -0.5, 0.25, 0.5, 0.1875, 0.4375},
-			{-0.2187, -0.5, 0.4375, -0.0313, 0.375, 0.5},
-			{0.0312, -0.5, 0.4375, 0.2187, 0.375, 0.5},
-			{0.2812, -0.5, 0.4375, 0.4687, 0.375, 0.5},
-			{-0.4687, -0.5, 0.4375, -0.2812, 0.375, 0.5},
-			{-0.5, 0.125, 0.25, 0.5, 0.1875, 0.4375},
-			{-0.5, -0.375, 0.25, 0.5, -0.3125, 0.4375},
-			
-			{0.25, -0.5, 0.4375, 0.4375, 0.1875, 0.5},
-			{0.25, -0.5, -0.5, 0.4375, 0.1875, -0.4375},
-			{0.4375, -0.5, 0.0313, 0.5, 0.375, 0.2187},
-			{0.4375, -0.5, -0.2187, 0.5, 0.375, -0.0312},
-			{0.4375, -0.5, -0.4687, 0.5, 0.375, -0.2812},
-			{0.4375, -0.5, 0.2812, 0.5, 0.375, 0.4687},
-			{0.25, 0.125, -0.5, 0.4375, 0.1875, 0.5},
-			{0.25, -0.375, -0.5, 0.4375, -0.3125, 0.5},
-		}
-	},
 	selection_box = {
 		type = "fixed",
 		fixed = {
@@ -202,12 +92,145 @@ for _, entry in ipairs(myfences.colors) do
 
 	local tiles = {
 		"myfences_wood.png"..stain,
-		"myfences_wood.png"..stain,
-		"myfences_wood.png^[transformR90"..stain,
-		"myfences_wood.png^[transformR90"..stain,
-		"myfences_wood.png^[transformR90"..stain,
-		"myfences_wood.png^[transformR90"..stain,
 	}
+
+local node_picket_gate = {
+	description = "Picket Gate",
+	tiles = {
+		"myfences_wood.png",
+		},
+	drawtype = "mesh",
+	mesh = "myfences_picket.obj",
+	paramtype = "light",
+	paramtype2 = "facedir",
+	groups = {cracky=2},
+	selection_box = {
+		type = "fixed",
+		fixed = {
+			{-0.5, -0.5, 0.5, 0.5, 0.5, 0.325}, 
+		}
+	},
+	collision_box = {
+		type = "fixed",
+		fixed = {
+			{-0.5, -0.5, 0.5, 0.5, 0.5, 0.325}, 
+		}
+	},
+	on_rightclick = function(pos, node, player, itemstack, pointed_thing)
+		local p2 = node.param2
+		local dir = core.facedir_to_dir(p2)
+		if node.name == "myfences:picket_gate_"..color then
+			core.set_node(pos, {name="myfences:picket_gate_open_"..color,  param2=p2})
+		else
+			core.set_node(pos, {name="myfences:picket_gate_open",  param2=p2})
+		end
+	end
+}
+core.register_node("myfences:picket_gate", node_picket_gate)
+
+local node_picket_gate_open = {
+	description = "Picket Gate Open",
+	tiles = {
+		"myfences_wood.png",
+		},
+	drawtype = "mesh",
+	mesh = "myfences_picket_gate_open.obj",
+	paramtype = "light",
+	paramtype2 = "facedir",
+	drops = "myfences:picket_gate",
+	groups = {cracky=2,not_in_creative_inventory = 1},
+	selection_box = {
+		type = "fixed",
+		fixed = {
+			{-0.5, -0.5, -0.5, -0.325, 0.5, 0.5}, 
+		}
+	},
+	collision_box = {
+		type = "fixed",
+		fixed = {
+			{-0.5, -0.5, -0.5, -0.325, 0.5, 0.5}, 
+		}
+	},
+	on_rightclick = function(pos, node, player, itemstack, pointed_thing)
+		local p2 = node.param2
+		local dir = core.facedir_to_dir(p2)
+		if node.name == "myfences:picket_gate_open_"..color then
+			core.set_node(pos, {name="myfences:picket_gate_"..color,  param2=p2})
+		else
+			core.set_node(pos, {name="myfences:picket_gate",  param2=p2})
+		end
+	end
+}
+core.register_node("myfences:picket_gate_open", node_picket_gate_open)
+
+local node_picketb_gate = {
+	description = "Picket Gate",
+	tiles = {
+		"myfences_wood.png",
+		},
+	drawtype = "mesh",
+	mesh = "myfences_picketb.obj",
+	paramtype = "light",
+	paramtype2 = "facedir",
+	groups = {cracky=2},
+	selection_box = {
+		type = "fixed",
+		fixed = {
+			{-0.5, -0.5, 0.5, 0.5, 0.5, 0.325}, 
+		}
+	},
+	collision_box = {
+		type = "fixed",
+		fixed = {
+			{-0.5, -0.5, 0.5, 0.5, 0.5, 0.325}, 
+		}
+	},
+	on_rightclick = function(pos, node, player, itemstack, pointed_thing)
+		local p2 = node.param2
+		local dir = core.facedir_to_dir(p2)
+		if node.name == "myfences:picketb_gate_"..color then
+			core.set_node(pos, {name="myfences:picketb_gate_open_"..color,  param2=p2})
+		else
+			core.set_node(pos, {name="myfences:picketb_gate_open",  param2=p2})
+		end
+	end
+}
+core.register_node("myfences:picketb_gate", node_picketb_gate)
+
+local node_picketb_gate_open = {
+	description = "Picket Gate Open",
+	tiles = {
+		"myfences_wood.png",
+		},
+	drawtype = "mesh",
+	mesh = "myfences_picketb_gate_open.obj",
+	paramtype = "light",
+	paramtype2 = "facedir",
+	drops = "myfences:picketb_gate",
+	groups = {cracky=2,not_in_creative_inventory = 1},
+	selection_box = {
+		type = "fixed",
+		fixed = {
+			{-0.5, -0.5, -0.5, -0.325, 0.5, 0.5}, 
+		}
+	},
+	collision_box = {
+		type = "fixed",
+		fixed = {
+			{-0.5, -0.5, -0.5, -0.325, 0.5, 0.5}, 
+		}
+	},
+	on_rightclick = function(pos, node, player, itemstack, pointed_thing)
+		local p2 = node.param2
+		local dir = core.facedir_to_dir(p2)
+		if node.name == "myfences:picketb_gate_open_"..color then
+			core.set_node(pos, {name="myfences:picketb_gate_"..color,  param2=p2})
+		else
+			core.set_node(pos, {name="myfences:picketb_gate",  param2=p2})
+		end
+	end
+}
+core.register_node("myfences:picketb_gate_open", node_picketb_gate_open)
 
 	local node = table.copy(node_picketb)
 	node.description = desc.." Picket Fence"
@@ -236,6 +259,34 @@ for _, entry in ipairs(myfences.colors) do
 	node.drop = "myfences:picketb_corner"
 	node.groups.not_in_creative_inventory = 1
 	core.register_node("myfences:picketb_corner_"..color, node)
+
+	node = table.copy(node_picket_gate)
+	node.description = desc.." Picket Gate"
+	node.tiles = tiles
+	node.drop = "myfences:picket_gate"
+	node.groups.not_in_creative_inventory = 1
+	core.register_node("myfences:picket_gate_"..color, node)
+
+	node = table.copy(node_picket_gate_open)
+	node.description = desc.." Picket Gate Open"
+	node.tiles = tiles
+	node.drop = "myfences:picket_gate"
+	node.groups.not_in_creative_inventory = 1
+	core.register_node("myfences:picket_gate_open_"..color, node)
+
+	node = table.copy(node_picketb_gate)
+	node.description = desc.." Picket Gate"
+	node.tiles = tiles
+	node.drop = "myfences:picketb_gate"
+	node.groups.not_in_creative_inventory = 1
+	core.register_node("myfences:picketb_gate_"..color, node)
+
+	node = table.copy(node_picketb_gate_open)
+	node.description = desc.." Picket Gate Open"
+	node.tiles = tiles
+	node.drop = "myfences:picketb_gate"
+	node.groups.not_in_creative_inventory = 1
+	core.register_node("myfences:picketb_gate_open_"..color, node)
 end
 
 core.register_craft({
@@ -263,5 +314,15 @@ core.register_craft({
 	type = "shapeless",
 	output = "myfences:picketb_corner",
 	recipe = {"myfences:picketb","myfences:picketb"},
+})
+core.register_craft({
+	type = "shapeless",
+	output = "myfences:picket_gate",
+	recipe = {"myfences:picket","default:steel_ingot"},
+})
+core.register_craft({
+	type = "shapeless",
+	output = "myfences:picketb_gate",
+	recipe = {"myfences:picketb","default:steel_ingot"},
 })
 
