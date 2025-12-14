@@ -42,6 +42,13 @@ local node_short2_corner = {
 			{0.25,-0.5,-0.5,0.5,0.5,0.5},
 		}
 	},
+	collision_box = {
+		type = "fixed",
+		fixed = {
+			{-0.5,-0.5,0.25,0.5,0.5,0.5},
+			{0.25,-0.5,-0.5,0.5,0.5,0.5},
+		}
+	},
 	groups = {choppy = 2, flammable = 1},
 	sounds = default.node_sound_stone_defaults(),
 }
