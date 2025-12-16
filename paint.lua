@@ -11,6 +11,7 @@ local paintables = {
 	"myfences:short2", "myfences:short2_corner", "myfences:short2_gate", "myfences:short2_gate_open",
 	"myfences:decorative", "myfences:decorative_corner", "myfences:decorative_gate", "myfences:decorative_gate_open",
 	"myfences:neighbor", "myfences:neighbor_corner", "myfences:neighbor_gate", "myfences:neighbor_gate_open",
+	"myfences:v_fence", "myfences:v_fence_corner", "myfences:v_fence_gate", "myfences:v_fence_gate_open",
 }
 
 local colors = {}
