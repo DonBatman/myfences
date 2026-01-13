@@ -78,3 +78,20 @@ core.register_craft({
 	output = "myfences:board 4",
 	recipe = {"group:wood","group:wood"},
 })
+
+if core.get_modpath("lucky_block") then
+	lucky_block:add_blocks({
+		{"dro", {"myfences:decorative"}, 10},
+		{"dro", {"myfences:garden"}, 10},
+		{"dro", {"myfences:garden2"}, 10},
+		{"dro", {"myfences:neighbor"}, 10},
+		{"dro", {"myfences:pedestal"}, 10},
+		{"dro", {"myfences:picket"}, 10},
+		{"dro", {"myfences:privacy"}, 10},
+		{"dro", {"myfences:privacy_with_lattice"}, 10},
+		{"dro", {"myfences:short"}, 10},
+		{"dro", {"myfences:short2"}, 10},
+		{"dro", {"myfences:stick"}, 10},
+		{"dro", {"myfences:v_fence"}, 10},
+	})
+end
